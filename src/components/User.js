@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Movie from "./Movie";
 
 const User = () => {
   return(
@@ -11,6 +12,15 @@ const User = () => {
         </div>
         <div className="main_tit">MY WATCH LIST</div>
       </header>
+      <section className="my">
+        <ul className="list">
+          {localStorage.getItem('watch') &&
+          localStorage.getItem('watch').split(',').map((v)=>{
+            console.log(v)
+            // return <li key={v.id}><Movie {...v}/></li>;
+          })}
+        </ul>
+      </section>
     </div>
   )
 }
