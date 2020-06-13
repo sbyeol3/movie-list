@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import {fetchGenres, fetchMovies} from "./data";
+import {fetchGenres, fetchMovies, getHost} from "./data";
 import Movie from "./Movie";
 import './style.css';
 
@@ -26,6 +26,7 @@ export default () => {
   useEffect(()=>{
     fetchMovies(1).then(({results}) => setMovieList(results));
     fetchGenres().then(({results}) => setGenreList(results));
+    getHost()
   },[]);
 
   return(

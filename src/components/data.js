@@ -44,3 +44,7 @@ export async function fetchGenres() {
     console.log(e)
   }
 }
+
+export const getHost = async() => {
+  const res = await axios.get('http://localhost:5000/api/host');
+}
