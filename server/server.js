@@ -7,7 +7,15 @@ const app = express();
 app.use(cors());
 
 app.get('/api/host', (req, res) => {
-  res.send(`Response`);
+  db.query("select * from movie_list", (err, data) => {
+    if(!err) {
+      res.send(data);
+
+    } else {
+      console.log('******',err);
+      res.send(err);
+    }
+  })
 })
 
 app.listen(PORT, () => {
