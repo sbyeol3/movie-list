@@ -1,0 +1,146 @@
+/* commons */
+html {
+    background-color: #243B55;
+    color: white;
+}
+
+.icons button {
+    height: 40px;
+    width: 80px;
+    border-radius: 30px;
+    outline: none;
+    font-size: 13px;
+    border: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: #888888;
+    color: white;
+    font-weight: 300;
+}
+
+.icons button:hover {
+    background-color: #F56217;
+}
+
+/* main */
+
+.main {
+    width: 100%;
+    height: 300px;
+    text-align: center;
+}
+
+.main .btn {
+    width: 200px;
+    height: 50px;
+    outline: none;
+    background: linear-gradient( 45deg, yellow, red );
+    border: none;
+}
+
+/* Upcoming movies */
+.upcoming {
+    padding: 0;
+}
+
+.upcoming .main_tit {
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+    font-size: 70px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
+
+.upcoming .list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.upcoming .list li{
+    width: 23%;
+    margin: 20px 0;
+    list-style: none;
+}
+
+/* Movie Detail */
+.movie {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #0B486B;
+    height: 630px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.movie:hover {
+    box-shadow: 0 12px 20px 0 rgba(0,0,0,0.4);
+}
+
+.movie .top {
+    border-radius: inherit;
+    display: flex;
+    height: 50px;
+    background: #F56217;
+    /*background: -webkit-linear-gradient(to right, #F56217, #0B486B);*/
+    /*background: linear-gradient(to right, #F56217, #0B486B);*/
+
+}
+
+.movie .top .title {
+    flex: 6;
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 50px;
+    padding-left: 10px;
+    color: #ece6cc;
+}
+
+.movie .top .vote_average {
+    font-size: 12px;
+    line-height: 50px;
+    flex: 1;
+}
+
+.movie .poster {
+    margin: 10px 0;
+    text-align: center;
+}
+
+.movie .poster img {
+    width: 90%;
+}
+
+.movie .contents {
+    padding: 10px;
+}
+
+.movie .contents .overview {
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.movie .contents .overview .more {
+    color: #F56217;
+    font-weight: 800;
+}
+
+.movie .contents .date {
+    font-size: 13px;
+    position: absolute;
+    top: 600px;
+    left: 210px;
+}
+
+/* user */
+
+.user .header .main_tit {
+    text-align: center;
+    height: 200px;
+    line-height: 200px;
+    font-size: 70px;
+    font-weight: 900;
+    letter-spacing: 5px;
+}
