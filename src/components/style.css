@@ -22,6 +22,10 @@ html {
     background-color: #F56217;
 }
 
+.Toastify__toast-body {
+    font-size: 13px;
+}
+
 /* main */
 
 .main {
@@ -151,6 +155,33 @@ html {
     left: 210px;
 }
 
+.movie [tooltip]:hover {
+    position: relative;
+}
+
+.movie [tooltip]:hover:after {
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+    box-shadow: 0px 0px 3px 1px rgba(50, 50, 50, 0.4);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 400;
+    content: attr(tooltip);
+    margin-bottom: 10px;
+    top: 130%;
+    left: 0;
+    padding: 7px 12px;
+    position: absolute;
+    min-width: 300px;
+    word-wrap: break-word;
+    z-index: 9999;
+}
+
+
 /* user */
 
 .user .header .main_tit {
@@ -206,4 +237,83 @@ html {
 .user .my .my_list tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.2);
     cursor: pointer;
+}
+
+/* modal */
+
+.modal {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    color: #222222;
+}
+
+.modal .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+.modal .modal-content .modal-tit {
+    font-size: 20px;
+    color: rgba(160,160,160,0.4);
+    font-weight: 800;
+    margin: 20px 0;
+}
+
+.modal .modal-content .contents .title {
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #243B55;
+}
+
+.modal .modal-content .contents .flex-box {
+    display: flex;
+}
+
+.modal .modal-content .contents .flex-box .poster {
+    padding: 20px;
+    flex: 2;
+    width: 100%;
+    height: auto;
+}
+
+.modal .modal-content .contents .flex-box .info {
+    flex: 2;
+    padding: 30px 20px;
+    text-align: right;
+}
+
+.modal .modal-content .contents .flex-box .info .overview {
+    text-align: left;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 300;
+    margin-top: 20px;
+}
+
+.modal .genres {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.modal .genres .genre {
+    padding: 5px 10px;
+    font-size: 13px;
+    font-weight: 300;
+    color: white;
+    border-radius: 15px;
+    background-color: #F56217;
+    margin: 2px;
+    box-shadow: 0 5px 5px 0 rgba(150,150,150,0.2);
 }

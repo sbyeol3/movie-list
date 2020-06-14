@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { URL, API_KEY, GENRE_URL } from "../config";
+import { URL, API_KEY, GENRE_URL, DETAIL_URL } from "../config";
 
 export async function fetchMovies(page) {
   const request = {
@@ -48,7 +48,7 @@ export async function fetchGenres() {
 export async function fetchDetail(id) {
   const request = {
     method: 'GET',
-    url: GENRE_URL+`/${id}`,
+    url: DETAIL_URL+`/${id}`,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json;charset=UTF-8'

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import {fetchGenres, fetchMovies, getHost} from "./data";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Movie from "./Movie";
 import './style.css';
 
@@ -13,11 +15,15 @@ export default () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
 
-  const add = (id,title) => {
+  const add = (id,title,date) => {
     for (let i=0;i<addList.length;i++){
-      if(addList[i].id === id) return setAddList(addList.filter(v => v.id !== id));
+      if(addList[i].id === id) {
+        toast.error(`📦 <${title}> Watch List에서 삭제했어요!`);
+        return setAddList(addList.filter(v => v.id !== id));
+      }
     }
-    setAddList([{id,title},...addList])
+    toast.dark(`📨 <${title}> Watch List에 담았어요!`);
+    setAddList([{id,title,date},...addList])
   }
 
   const infiniteScroll = () => {
@@ -32,7 +38,6 @@ export default () => {
   }
 
   useEffect(()=>{
-    console.log(addList)
     localStorage.setItem('watch',JSON.stringify(addList))
   },[addList])
 
@@ -62,6 +67,7 @@ export default () => {
         <div className="main_tit">UPCOMING MOVIES!</div>
       </header>
       <section>
+        <ToastContainer/>
         <ul className="list">
           {movieList && movieList.length === 0 && <div>No results</div>}
           {movieList && movieList.length > 0 && movieList.map((v)=>{

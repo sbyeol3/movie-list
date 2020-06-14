@@ -6,17 +6,14 @@ import Movie from "./Movie";
 
 const User = ({history}) => {
   const [myList, setMyList] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal, setOpenModal] = useState(0);
+
   useEffect(()=>{
     if(localStorage.getItem('watch')){
       const list = localStorage.getItem('watch');
       setMyList(JSON.parse(list));
     }
   },[]);
-
-  const routesPate = (id) => {
-    history.push(`/user/${id}`);
-  };
 
   return(
     <div className="user">
@@ -34,21 +31,23 @@ const User = ({history}) => {
           <tr>
             <th>ID</th>
             <th>TITLE</th>
+            <th>RELEASE DATE</th>
           </tr>
           </thead>
           <tbody>
           {myList.map(v=>{
             return(
-              <tr key={v.id} onClick={()=>routesPate(v.id)}>
+              <tr key={v.id} onClick={()=>setOpenModal(v.id)}>
                 <td>{v.id}</td>
                 <td>{v.title}</td>
+                <td>{v.date}</td>
               </tr>
             );
           })}
           </tbody>
         </table>
       </section>
-
+      {openModal !== 0 && <MovieDetail id={openModal} onSubmit={setOpenModal}/>}
     </div>
   )
 }
