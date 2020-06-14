@@ -4,7 +4,7 @@ import {fetchDetail} from './data'
 import {covert_path} from "./Movie";
 
 const MovieDetail = (props) => {
-  const {id, onSubmit} = props;
+  const {id, onSubmit, deleteItem} = props;
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
@@ -12,9 +12,13 @@ const MovieDetail = (props) => {
   }, [id]);
 
   return (
-    <div className="modal" onClick={() => onSubmit(0)}>
+    <div className="modal" >
       <div className="modal-content">
-        <div className="modal-tit">Movie Detail</div>
+        <div className="top">
+          <div className="modal-tit" onClick={() => onSubmit(0)}>&lt; back</div>
+          <div className="empty"/>
+          <button className="delete" onClick={()=>deleteItem(id)}>Delete</button>
+        </div>
         {detail && (
           <div className="contents">
             <div className="title">{detail.original_title} ({detail.release_date}) </div>

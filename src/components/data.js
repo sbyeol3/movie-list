@@ -65,7 +65,3 @@ export async function fetchDetail(id) {
     console.log(e)
   }
 }
-
-export const getHost = async() => {
-  const res = await axios.get('http://localhost:5000/api/host');
-}

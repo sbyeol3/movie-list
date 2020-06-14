@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import './style.css'
 import MovieDetail from "./MovieDetail";
-import Movie from "./Movie";
+import {toast, ToastContainer} from "react-toastify";
 
-const User = ({history}) => {
+const User = () => {
   const [myList, setMyList] = useState([]);
   const [openModal, setOpenModal] = useState(0);
 
@@ -15,6 +15,16 @@ const User = ({history}) => {
     }
   },[]);
 
+  const deleteItem = (id) => {
+    setOpenModal(0);
+    setMyList(myList.filter(v => v.id !== id));
+    return toast.error('⚡️ 삭제 완료!')
+  }
+
+  useEffect(()=>{
+    localStorage.setItem('watch',JSON.stringify(myList))
+  },[myList])
+
   return(
     <div className="user">
       <header className="header">
@@ -24,9 +34,9 @@ const User = ({history}) => {
         </div>
         <div className="main_tit">MY WATCH LIST</div>
       </header>
+      <ToastContainer/>
       <section className="my">
         <table className="my_list">
-          {/*<caption>my watch list</caption>*/}
           <thead>
           <tr>
             <th>ID</th>
@@ -47,7 +57,7 @@ const User = ({history}) => {
           </tbody>
         </table>
       </section>
-      {openModal !== 0 && <MovieDetail id={openModal} onSubmit={setOpenModal}/>}
+      {openModal !== 0 && <MovieDetail id={openModal} onSubmit={setOpenModal} deleteItem={deleteItem}/>}
     </div>
   )
 }

@@ -263,10 +263,9 @@ html {
 }
 
 .modal .modal-content .modal-tit {
-    font-size: 20px;
-    color: rgba(160,160,160,0.4);
-    font-weight: 800;
-    margin: 20px 0;
+    color: rgba(160,160,160,0.8);
+    flex: 1;
+    cursor: pointer;
 }
 
 .modal .modal-content .contents .title {
@@ -316,4 +315,24 @@ html {
     background-color: #F56217;
     margin: 2px;
     box-shadow: 0 5px 5px 0 rgba(150,150,150,0.2);
+}
+
+.modal .modal-content .top {
+    display: flex;
+    margin: 10px 0;
+}
+
+.modal .modal-content .top .delete {
+    flex: 1;
+    height: 30px;
+    line-height: 20px;
+    outline: none;
+    background-color: #eeeeee;
+    border: none;
+    color: red;
+    cursor: pointer;
+}
+
+.modal .modal-content .top .empty {
+    flex: 8;
 }
