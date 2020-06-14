@@ -45,6 +45,27 @@ export async function fetchGenres() {
   }
 }
 
+export async function fetchDetail(id) {
+  const request = {
+    method: 'GET',
+    url: GENRE_URL+`/${id}`,
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json;charset=UTF-8'
+    },
+    params: {
+      api_key: API_KEY,
+    }
+  };
+  try {
+    const response = await axios(request);
+    const { data } = response
+    return data
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 export const getHost = async() => {
   const res = await axios.get('http://localhost:5000/api/host');
 }

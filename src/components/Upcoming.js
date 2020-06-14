@@ -8,15 +8,16 @@ export default () => {
   const [movieList, setMovieList] = useState([]);
   const [genreList, setGenreList] = useState([]);
   const [addList, setAddList] = useState(localStorage.getItem('watch') !== null ?
-    localStorage.getItem('watch').split(',') : []);
+    JSON.parse(localStorage.getItem('watch')) : []);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
 
-  const add = (id) => {
-    if(!addList.includes(id))
-      setAddList([id,...addList])
-    else setAddList(addList.filter(v => v !== id));
+  const add = (id,title) => {
+    for (let i=0;i<addList.length;i++){
+      if(addList[i].id === id) return setAddList(addList.filter(v => v.id !== id));
+    }
+    setAddList([{id,title},...addList])
   }
 
   const infiniteScroll = () => {
@@ -32,7 +33,7 @@ export default () => {
 
   useEffect(()=>{
     console.log(addList)
-    localStorage.setItem('watch',addList.join(','))
+    localStorage.setItem('watch',JSON.stringify(addList))
   },[addList])
 
   useEffect(()=>{
@@ -40,6 +41,7 @@ export default () => {
     fetchGenres().then(({results}) => setGenreList(results));
     window.addEventListener('scroll', infiniteScroll, true)
     getHost()
+    console.log(addList)
   },[]);
 
   useEffect(()=> {
@@ -63,7 +65,7 @@ export default () => {
         <ul className="list">
           {movieList && movieList.length === 0 && <div>No results</div>}
           {movieList && movieList.length > 0 && movieList.map((v)=>{
-            return <li key={v.id}><Movie onSubmit={add} {...v}/></li>;
+            return <li key={v.id}><Movie genre={genreList} onSubmit={add} {...v}/></li>;
           })}
         </ul>
       </section>

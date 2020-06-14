@@ -11,10 +11,10 @@ function filter(text) {
 
 const Movie = (props) => {
   const { id, title, vote_average, overview, release_date, poster_path, genre_ids } = props;
-  const { onSubmit } = props;
+  const { onSubmit, genre } = props;
   const path = covert_path(poster_path)
   return(
-    <div onClick={()=>onSubmit(id.toString())} className="movie">
+    <div onClick={()=>onSubmit(id.toString(),title)} className="movie">
       <div className="top">
         <div className="title">{title}</div>
         <div className="vote_average">{vote_average}</div>
@@ -23,7 +23,7 @@ const Movie = (props) => {
         <img src={path} alt={title} />
       </div>
       <div className="contents">
-        <div className="genres">{genre_ids}</div>
+        {/*<div className="genres">{genre_ids.map(v=>{return <div>{genre[v]}</div>})}</div>*/}
         <div className="overview">
           {filter(overview)}
           {overview.length > 200 && <span className="more">more</span>}

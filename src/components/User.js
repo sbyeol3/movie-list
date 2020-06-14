@@ -1,26 +1,54 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import './style.css'
+import MovieDetail from "./MovieDetail";
 import Movie from "./Movie";
 
-const User = () => {
+const User = ({history}) => {
+  const [myList, setMyList] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  useEffect(()=>{
+    if(localStorage.getItem('watch')){
+      const list = localStorage.getItem('watch');
+      setMyList(JSON.parse(list));
+    }
+  },[]);
+
+  const routesPate = (id) => {
+    history.push(`/user/${id}`);
+  };
+
   return(
     <div className="user">
       <header className="header">
         <div className="icons">
           <Link to="/"><button>main</button></Link>
-          <Link to="/user"><button>my list</button></Link>
+          <Link to="/movies"><button>movies</button></Link>
         </div>
         <div className="main_tit">MY WATCH LIST</div>
       </header>
       <section className="my">
-        <ul className="list">
-          {localStorage.getItem('watch') &&
-          localStorage.getItem('watch').split(',').map((v)=>{
-            console.log(v)
-            // return <li key={v.id}><Movie {...v}/></li>;
+        <table className="my_list">
+          {/*<caption>my watch list</caption>*/}
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+          </tr>
+          </thead>
+          <tbody>
+          {myList.map(v=>{
+            return(
+              <tr key={v.id} onClick={()=>routesPate(v.id)}>
+                <td>{v.id}</td>
+                <td>{v.title}</td>
+              </tr>
+            );
           })}
-        </ul>
+          </tbody>
+        </table>
       </section>
+
     </div>
   )
 }
