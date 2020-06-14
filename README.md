@@ -1,4 +1,4 @@
-# Solidware Coding Test
+# Solidware Web-development Test
 
 developed by SaetByeol Ahn
 
