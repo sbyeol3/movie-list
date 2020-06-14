@@ -17,10 +17,15 @@ export default () => {
     for (let i=0;i<addList.length;i++){
       if(addList[i].id === id)
         return toast.error(`📦 <${title}>는 이미 담겨있어요!`);
-        // return setAddList(addList.filter(v => v.id !== id));
     }
     toast.dark(`📨 <${title}> Watch List에 담았어요!`);
-    setAddList([{id,title,date},...addList])
+    const newList = [{id,title,date},...addList]
+    newList.sort(function(a, b) {
+      const A = new Date(a.date)
+      const B = new Date(b.date)
+      return B - A;
+    });
+    setAddList(newList)
   }
 
   const infiniteScroll = () => {
@@ -42,7 +47,6 @@ export default () => {
     fetchMovies(1).then(({results}) => setMovieList(results));
     fetchGenres().then(({results}) => setGenreList(results));
     window.addEventListener('scroll', infiniteScroll, true)
-    console.log(addList)
   },[]);
 
   useEffect(()=> {

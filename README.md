@@ -26,12 +26,12 @@ developed by SaetByeol Ahn
 2. In 'Upcoming movies', all upcoming movies should be listed. `충족`
 3. In 'Upcoming movies', the user should be able to add a movie to their watch list. `충족`
 4. In 'Watch list', all movies the user wants to see should be listed. `충족`
-5. In 'Watch list', all movies should be sorted by release date (descending - most recent movie first). 
-6. In 'Watch list', the user should be able to remove a movie from their watch list. 
-7. A movie should show the following information:
+5. In 'Watch list', all movies should be sorted by release date (descending - most recent movie first). `충족` 
+6. In 'Watch list', the user should be able to remove a movie from their watch list. `충족`
+7. A movie should show the following information: `충족`
   - Title
   - Average vote
   - Overview
   - Release date
-  - Genres
+  - Genres `detail`
   - Poster
